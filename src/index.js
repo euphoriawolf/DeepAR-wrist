@@ -10,29 +10,9 @@ console.log("Deepar version: " + deepar.version);
   // Get the element you want to place DeepAR into. DeepAR will inherit its width and height from this and fill it.
   const previewElement = document.getElementById("ar-screen");
 
-  // trigger loading progress bar animation
-  const loadingProgressBar = document.getElementById("loading-progress-bar");
-  loadingProgressBar.style.width = "100%";
-
   // All the effects are in the public/effects folder.
   // Here we define the order of effect files.
-  const effectList = [
-    "effects/ray-ban-wayfarer.deepar",
-    "effects/viking_helmet.deepar",
-    "effects/MakeupLook.deepar",
-    "effects/Split_View_Look.deepar",
-    "effects/flower_face.deepar",
-    "effects/Stallone.deepar",
-    "effects/galaxy_background_web.deepar",
-    "effects/Humanoid.deepar",
-    "effects/Neon_Devil_Horns.deepar",
-    "effects/Ping_Pong.deepar",
-    "effects/Pixel_Hearts.deepar",
-    "effects/Snail.deepar",
-    "effects/Hope.deepar",
-    "effects/Vendetta_Mask.deepar",
-    "effects/Fire_Effect.deepar",
-  ];
+  const effectList = ["effects/apple-watch.deepar", "effects/bracelet.deepar"];
 
   let deepAR = null;
 
@@ -48,19 +28,17 @@ console.log("Deepar version: " + deepar.version);
       rootPath: "./deepar-resources",
       additionalOptions: {
         cameraConfig: {
-          // facingMode: 'environment'  // uncomment this line to use the rear camera
+          facingMode: "environment", // uncomment this line to use the rear camera
         },
       },
     });
   } catch (error) {
     console.error(error);
-    document.getElementById("loading-screen").style.display = "none";
     document.getElementById("permission-denied-screen").style.display = "block";
     return;
   }
 
   // Hide the loading screen.
-  document.getElementById("loading-screen").style.display = "none";
   document.getElementById("ar-screen").style.display = "block";
 
   window.effect = effectList[0];
